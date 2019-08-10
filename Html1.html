@@ -10,7 +10,15 @@
 
 <p id="demo"></p>
 
+
+<!--//In HTML event handlers, this refers to the HTML element that received the event:-->
+<h2>The JavaScript <b>this</b> Keyword</h2>
+<button onclick="this.style.display='none'">Click to Remove Me!</button>
+<br/>
+
+
 <script>
+    "use strict"
 var txt = "";
 var person = {fname:"John", lname:"Doe", age:25}; 
 var x;
@@ -39,8 +47,53 @@ var n = str.search(/w3Schools/i);
 document.write('regular expression example of n:'+n + "<br >");
 var res = str.replace("W3Schools", "myschool");
 
-document.write('regular expression example of replacement:'+res);
+document.write('regular expression example of replacement:'+res+"<br >");
   //trying to do a pull request now for path2
+
+  // hoisting allow variables to be used before it is declared in JS.
+  // by defaul JS hoists variable declaration but does not hoist the initialization
+
+//The JavaScript this keyword refers to the object it belongs to.
+
+var person2 = {
+  firstName: "John",
+  lastName : "Doe",
+  id     : 5566,
+  fullName : function() {
+    return this.firstName + " " + this.lastName;
+  }
+};
+
+// Display data from the object:
+//document.getElementById("demo").innerHTML = person2.fullName();
+
+document.write('demonsytrating this keyword: '+person2.fullName()+"<br>");
+
+
+//In HTML event handlers, this refers to the HTML element that received the event:
+
+//arrow function
+var hello;
+
+hello = () => {       // same as hello = function() {
+  return "Hello World!";
+}
+
+/* or you can rewrite the above as
+hello = () => "Hello World!";
+
+*/
+/*If you have parameters, you pass them inside the parentheses:
+In fact, if you have only one parameter, you can skip the parentheses as well:
+
+
+hello = (val) => "Hello " + val;
+
+hello = val => "Hello " + val;
+*/
+
+
+document.write('arrow function demo : '+hello());
 </script>
 
 </body>
