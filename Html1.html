@@ -1,3 +1,5 @@
+<!-- this is a sample HTML and Javascript file for all changes that i feel relevant
+-->
 <!DOCTYPE html>
 <html>
 <body>
@@ -15,7 +17,29 @@ var x;
 for (x in person) {
   txt += person[x] + " ";
 }
+
+//Looping over an Array
+var cars = ['BMW', 'Volvo', 'Mini'];
+var x;
+
+for (x of cars) {
+  document.write(x + "<br >");
+}
+
 document.getElementById("demo").innerHTML = txt;
+
+//What Is a Regular Expression?
+//A regular expression is a sequence of characters that forms a search pattern.
+//   /pattern/modifiers;
+
+//Search a string for "W3Schools", and display the position of the match
+var str = "Visit W3Schools!"; 
+var n = str.search(/w3Schools/i);
+
+document.write('regular expression example of n:'+n + "<br >");
+var res = str.replace("W3Schools", "myschool");
+
+document.write('regular expression example of replacement:'+res);
 </script>
 
 </body>
