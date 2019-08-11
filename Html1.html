@@ -94,6 +94,58 @@ hello = val => "Hello " + val;
 
 
 document.write('arrow function demo : '+hello());
+
+// demonstrating call back and the sequence issue
+
+const numbers = [1, 2];
+
+function getNumbers() {
+  numbers.forEach(number => document.write("<br>"+'array number is :'+number));// this is an arrow function like this hello = val => "Hello " + val;
+}                 //number here is the parameter of the function defintion.. you are not giving function a name here..just the definition is here
+
+function addNumber(number) {
+  numbers.push(number);
+}
+
+getNumbers(numbers) // 1, 2
+addNumber(3);
+getNumbers(numbers) // 1, 2, 3
+
+function abc(){
+  document.write ('function called');
+}
+
+/*
+The problem
+Now, let's suppose both of our function calls take some amount of time to execute because we are making requests to a backend server. Let's mimic it by using built-in setTimeout methods and wrap our logic inside them.
+
+*/
+
+const numbers2 = [1, 2];
+
+function getNumbers2() {
+  setTimeout(() => {
+    numbers2.forEach(number2 => document.write("<br>"+'array number now is :'+number2));
+  }, 1000)
+}
+
+function addNumber2(number2) {
+  setTimeout(() => {
+  numbers2.push(number2)
+  }, 2000)
+}
+
+getNumbers2(numbers2) ;// 1, 2
+addNumber2(3);
+getNumbers2(numbers2); // 1, 2 ... Why?..  because the addnumber2 is not done yet
+
+
+setTimeout(()=>{
+  getNumbers2(numbers2) // now addnumber2 would be done
+
+},1000)
+
+
 </script>
 
 </body>
