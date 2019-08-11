@@ -1,0 +1,96 @@
+
+<!DOCTYPE html>
+<!-- example of Arrow method and why
+  -- example of constructor  
+  asynchronous call using setTimeout
+-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    div {
+
+        background-color: grey;
+        color: azure;
+        margin: 20px;
+        padding: 30px;
+        border-radius: 10px;
+
+    }
+
+    p {
+        color: red;
+    }
+
+    #showmessage {
+        background-color: lightblue;
+        color: black;
+        padding: 40px;
+        text-align: center;
+        border-radius: 40px;
+
+    }
+</style>
+
+
+<body>
+    <div id="divPlaceholder">
+
+
+    </div>
+    
+    <script>
+
+        ////*****************************************************************************
+        function showmessage(msg) {
+            document.getElementById('divPlaceholder').innerText = document.getElementById('divPlaceholder').innerText +
+                msg;
+    
+    
+        }
+    //old way of function calling
+    var addTWoNum =function(x,y){
+        return x+y;
+    }
+    showmessage('old method of calling function 4+5='+addTWoNum(4,5));
+
+    //Arrow Method 
+
+    var addTwoNumArrow = (x,y)=>{
+        return x+y;
+    }
+    showmessage('\n'+'Arrow method of calling function 4+5='+addTWoNum(4,5));
+
+
+    class Person{
+        constructor(n){
+            this.name = n;
+        }
+       printName = function(){
+            setTimeout( function()
+            {
+                showmessage('\n'+'Name in classic methd-'+this.name);
+            }
+                ,1000);  //calling this asynchonously.. only works in chrome. not in safari
+                       // this executes only after 1 sec 
+        }              //+this.name does not show the value.. so you have to use arrow function 
+
+        printArrow=() =>{
+            setTimeout(()=>showmessage('\n'+'Name in Arrow method'+this.name),2000);//arrow method
+        }
+    }
+    //calling the above class
+    let p = new Person('sajish');              
+                  p.printName();// classic method 
+                  p.printArrow();//Arrow Method
+
+
+
+    showmessage('\n'+'last message'); 
+    </script>
+</body>
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<!----> shows recursion
+<!---->shows arguments by callee
+
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Javascript recursion</title>
+</head>
+<style>
+    div {
+
+        background-color: grey;
+        color: azure;
+        margin: 20px;
+        padding: 30px;
+        border-radius: 10px;
+
+    }
+
+    p {
+        color: red;
+    }
+
+    #showmessage {
+        background-color: lightblue;
+        color: black;
+        padding: 40px;
+        text-align: center;
+        border-radius: 40px;
+
+    }
+</style>
+
+
+<body>
+
+    <h1>this is heading</h1>
+    <p> this is a paragraph</p>
+
+    <div>
+        testing with style sheets
+        <br />
+        Second line
+
+
+    </div>
+
+    <div id="showmessage">
+        <!--   messages are dynamically displayed here through javascript-->
+
+
+    </div>
+
+    <div id="showmessage2">
+        <!--   messages are dynamically displayed here through javascript-->
+
+
+    </div>
+
+    <div id="divPlaceholder">
+
+
+    </div>
+
+</body>
+
+<script>
+
+    ////*****************************************************************************
+    function showmsg(msg) {
+        document.getElementById('divPlaceholder').innerText = document.getElementById('divPlaceholder').innerText +
+            msg;
+
+
+    }
+
+    // example of recursion 
+    var ninja2 = {
+        yell: function (n) {
+            return n > 0 ? ninja2.yell(n - 1) + 'a' : 'Hiy';
+        }
+    }
+
+
+
+    showmsg(ninja2.yell(10));  // causes Hiyaaaa to be displayed
+
+////*****************************************************************************     
+//argumens by callee
+// if you want to call the same function back. there is a easier way
+
+
+
+var ninja3 = {
+    yell: function (n) {
+        //return n > 0 ? ninja3.yell(n - 1) + 'a' : 'Hiy';
+        // instead of above we say below
+        return n > 0 ?  arguments.callee(n - 1) + 'a' : '\n'+'Piy';
+    }
+}
+    showmsg(ninja3.yell(20));  // causes Hiyaaaa to be displayed
+
+////*****************************************************************************     
+
+
+
+
+
+    let print1 = function () {
+
+        console.log('hello this is method1');
+        let msg = 'this is method1 again but populated dynamically and different styling by id'; // let is used instead of var so as to avoid hasting. this 
+        //ensures that any errors are showed immediately .. only once variables are declared
+        //you can use them when you use 'let'
+        document.getElementById('showmessage').innerText = msg;
+
+    }
+
+    print1();
+
+    let print2 = function (cnt) {
+
+
+        let msg = 'a'; // let is used instead of var so as to avoid hasting. this 
+        //ensures that any errors are showed immediately .. only once variables are declared
+        //you can use them when you use 'let'
+        var i;
+        for (i = cnt; i > 0; i--) {
+            document.getElementById('showmessage2').innerText = document.getElementById('showmessage2').innerText +
+                msg;
+        }
+    }
+
+    print2(3);
+</script>
+
+</html>
