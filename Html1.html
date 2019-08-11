@@ -95,7 +95,10 @@ hello = val => "Hello " + val;
 
 document.write('arrow function demo : '+hello());
 
+
 // demonstrating call back and the sequence issue
+// settimeout will refresh the page .. so everything in the page will be lost ?
+//https://dev.to/shimphillip/asynchronous-javascript-in-under-5-minutes-5dbg 
 
 const numbers = [1, 2];
 
@@ -125,7 +128,7 @@ const numbers2 = [1, 2];
 
 function getNumbers2() {
   setTimeout(() => {
-    numbers2.forEach(number2 => document.write("<br>"+'array number now is :'+number2));
+    numbers2.forEach(number2 => document.write("<br>"+'array number now with temp fix is :'+number2));
   }, 1000)
 }
 
@@ -136,7 +139,7 @@ function addNumber2(number2) {
 }
 
 getNumbers2(numbers2) ;// 1, 2
-addNumber2(3);
+addNumber2(3);//'addNumber2(3)' function call won't wait for its previous line to finish.
 getNumbers2(numbers2); // 1, 2 ... Why?..  because the addnumber2 is not done yet
 
 
@@ -144,6 +147,36 @@ setTimeout(()=>{
   getNumbers2(numbers2) // now addnumber2 would be done
 
 },1000)
+
+/* solution
+Invoking asynchronous calls line by line won't work in this case. 
+Is there any other way to make sure a function gets executed only after another function finishes 
+executing? Callbacks can help us! In javascript, functions can get passed around as arguments. 
+Therefore, we could have 'getNumbers' function get passed into addNumber function and execute it
+ once a number has been added.
+*/
+const numbers3 = [1, 2];
+
+function getNumbers3() {
+  setTimeout(() => {
+    numbers3.forEach(number3 => document.write("<br>"+'array number after fix now is :'+number3));
+      }, 1000)
+}
+
+//document.write("<br>"+'array number after fix now is :'+number3));
+    
+
+function addNumber3(number3, callback) {
+  setTimeout(() => {
+  numbers3.push(number3)
+  callback();
+  }, 2000)
+}
+
+getNumbers3(numbers3) // 1, 2
+addNumber3(3, getNumbers3) // 1, 2, 3
+
+//you can rewrite this using promoses too.. its in the link i have above
 
 
 </script>
