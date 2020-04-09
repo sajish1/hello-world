@@ -1,0 +1,9 @@
+this is a test file created in path1 branch 
+I will use a pull request to compare this with my master branch
+
+
+A pull request is a comparison between two branches. Generally, that comparison is between master (the branch with production code) and another branch used for code in development. The pull request represents a change to the code. This can mean adding, modifying, or deleting files made on a branch, which the author would like to incorporate in another branch (again, typically in the production code). Frequently, the work being done within a pull request originates from an issue in the repository.
+
+
+A pull request is also a place where you can have extended conversations about the changes between two branches.
+Let’s say that Ali introduces a bug fix, but accidentally creates a new bug when resolving the fix. Sally can view this work, send a quick comment (on the pull request) to Ali identifying the new issue, and either fix the problem herself or give Ali a chance to make quick edits before merging.
