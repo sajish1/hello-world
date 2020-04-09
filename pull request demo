@@ -1,4 +1,8 @@
 this is a test file to explore what a pull request does
 
-A pull request is a comparison between two branches. Generally, that comparison is between master (the branch with production code) and another branch used for code in development. The pull request represents a change to the code. This can mean adding, modifying, or deleting files made on a branch, which the author would like to incorporate in another branch (again, typically in the production code). Frequently, the work being done within a pull request originates from an issue in the repository.
+A pull request is a comparison between two branches. 
+Generally, that comparison is between master (the branch with production code) and another branch used for code in development. The pull request represents a change to the code. This can mean adding, modifying, or deleting files made on a branch, which the author would like to incorporate in another branch (again, typically in the production code). Frequently, the work being done within a pull request originates from an issue in the repository.
 
+
+
+adding some changes after the pull and merge with master is done to see how history is tracked
